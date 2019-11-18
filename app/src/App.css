@@ -35,3 +35,7 @@
   color: red;
   font-size: 70%;
 }
+
+::placeholder {
+  color: #fbfceb;
+}
