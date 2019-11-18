@@ -2,10 +2,11 @@ import React from 'react';
 import { Route, Link, Switch } from 'react-router-dom';
 import './App.css';
 
+import PrivateRoute from './components/PrivateRoute';
 import Login from './components/Login';
 import Register from './components/Register';
-import ResturantList from './components/ResturantList';
-import ResturantCard from './components/ResturantCard';
+import RestaurantList from './components/RestaurantList';
+import RestaurantCard from './components/RestaurantCard';
 import AddRestForm from './components/AddRestForm';
 import UpdateRestForm from './components/UpdateRestForm';
 
@@ -16,10 +17,10 @@ function App() {
       <Switch>
         <Route exact path='/login' component={Login} />
         <Route path='/register' component={Register} />
-        <Route path='/resturantlist' component={ResturantList} />
-        <Route path='/resturantcard' component={ResturantCard} />
-        <Route path='/addrestform' component={AddRestForm} />
-        <Route path='/updaterestform' component={UpdateRestForm} />
+        <PrivateRoute path='/restaurantlist' component={RestaurantList} />
+        <PrivateRoute path='/restaurantcard' component={RestaurantCard} />
+        <PrivateRoute path='/addrestform' component={AddRestForm} />
+        <PrivateRoute path='/updaterestform' component={UpdateRestForm} />
       </Switch>
     </div>
   );
