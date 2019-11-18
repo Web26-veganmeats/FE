@@ -16,13 +16,15 @@ const validate = ({ username, password }) => {
   return errors;
 };
 
-const Login = () => {
+const Login = (props) => {
+  console.log('Login Component Props: ', props)
   const handleSubmit = (values, tools) => {
     axiosWithAuth()
       .post("https://veganmeets-buildweek.herokuapp.com/api/auth/login", values)
       .then(response => {
         console.log(response);
         alert(response.data.message);
+        props.history.push('/restaurantList')
         tools.resetForm();
       })
       .catch(error => {

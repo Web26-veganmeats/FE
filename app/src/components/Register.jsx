@@ -35,6 +35,7 @@ const Register = () => {
       .then(response => {
         console.log(response);
         window(response.data.message);
+        props.history.push('/restaurantList')
         tools.resetForm();
       })
       .catch(error => {
