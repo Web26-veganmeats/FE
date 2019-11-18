@@ -25,6 +25,7 @@ const InnerNav = styled.div`
   list-style: none;
 `;
 
+<<<<<<< HEAD
 const NavBar = () => {
   return (
     <div>
@@ -45,3 +46,5 @@ const NavBar = () => {
 };
 
 export default NavBar;
+=======
+>>>>>>> 363e50da6c61bf6bb68bcb3210d625cc698b942f
