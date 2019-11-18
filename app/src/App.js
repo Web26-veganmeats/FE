@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Link, Switch } from 'react-router-dom';
 import './App.css';
 
+import PrivateRoute from './components/PrivateRoute';
 import Login from './components/Login';
 import Register from './components/Register';
 import ResturantList from './components/ResturantList';

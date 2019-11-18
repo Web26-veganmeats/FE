@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import axios from "axios";
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 const SignupDiv = styled.div`
   margin-top: 20vh;
@@ -27,7 +27,7 @@ const validate = ({ username, password }) => {
 
 const Register = () => {
   const handleSubmit = (values, tools) => {
-    axios
+    axiosWithAuth()
       .post(
         "https://veganmeets-buildweek.herokuapp.com/api/auth/register",
         values
