@@ -25,7 +25,7 @@ const validate = ({ username, password }) => {
   return errors;
 };
 
-const Register = () => {
+const Register = (props) => {
   const handleSubmit = (values, tools) => {
     axiosWithAuth()
       .post(
@@ -35,6 +35,7 @@ const Register = () => {
       .then(response => {
         console.log(response);
         window(response.data.message);
+        localStorage.setItem('token', response.data.token)
         props.history.push('/restaurantList')
         tools.resetForm();
       })

@@ -24,7 +24,8 @@ const Login = (props) => {
       .then(response => {
         console.log(response);
         alert(response.data.message);
-        props.history.push('/restaurantList')
+        localStorage.setItem('token', response.data.token)
+        props.history.push('/restaurantlist')
         tools.resetForm();
       })
       .catch(error => {
