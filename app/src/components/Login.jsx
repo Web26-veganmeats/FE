@@ -22,10 +22,11 @@ const Login = () => {
       .post("https://veganmeets-buildweek.herokuapp.com/api/auth/login", values)
       .then(response => {
         console.log(response);
+        alert(response.data.message);
         tools.resetForm();
       })
       .catch(error => {
-        alert(error.message);
+        window(error.message);
       })
       .finally(() => {
         tools.setSubmitting(false);

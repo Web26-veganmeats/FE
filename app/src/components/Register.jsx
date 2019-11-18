@@ -34,6 +34,7 @@ const Register = () => {
       )
       .then(response => {
         console.log(response);
+        window(response.data.message);
         tools.resetForm();
       })
       .catch(error => {
