@@ -1,6 +1,7 @@
 import React,{useState, useEffect} from 'react';
 import axios from "axios";
 import { connect } from 'react-redux';
+import { fetchRest } from '../actions/actions';
 import NavBar from './NavBar';
 import salad from "./photos/salad.jpg";
 import styled from "styled-components";
@@ -35,36 +36,33 @@ import styled from "styled-components";
        
 
 const ResturantCard = (props) => {
-    // const {id, name, Description, Price, Ratings, Location, MenuItems } = props;
-    // const [foodCard, setFoodCard] = useState([])
+    console.log('Restaurant Card Props: ', props.restData)
 
-    //  useEffect(()=>{
-    //     Promise.all(
-    //       foodCard.map(function(element){
-    //         return axios.get(element)
-    //           .then(res =>{
-    //             return res.data;
-    //           })
-    //       }))
-    //       .then(res1 => {
-    //         setFoodCard(res1)
-    //       })
-    // },)
+    useEffect(() => {
+      props.fetchRest()
+    }, [])
   
     return (
-        <div>
-          <NavBar />
-          <Card>
-            <CardBody>
-              <CardImg top width="20%" src= {salad} alt="food card image " />
-              <CardText>  Description: </CardText>
-              <CardSubtitle>Menu Items: </CardSubtitle>
-              <CardSubtitle>Price: </CardSubtitle>
-              <CardSubtitle>Ratings: </CardSubtitle>
-              <CardSubtitle> Location: </CardSubtitle>
-            </CardBody>
-          </Card>
-    </div>
+      <div>
+        {props.restData.map(rest => {
+          return (
+            <Card>
+              <CardBody>
+                <CardImg top width="20%" src= {salad} alt="food card image " />
+                <CardText>{rest.name}</CardText>
+                <CardSubtitle>Phone: {rest.phone}</CardSubtitle>
+                <CardSubtitle>Menu Items: {rest.menuItems.map(item => {
+                  return (
+                    <div>{item.name}</div>
+                  )
+                })}</CardSubtitle>
+                <CardSubtitle>Ratings: </CardSubtitle>
+                <CardSubtitle>{`Located on ${rest.street_address} ${rest.city}, ${rest.state} ${rest.zip_code}`}</CardSubtitle>
+              </CardBody>
+            </Card>
+          )
+        })}
+      </div>
   );
 };
 
@@ -74,4 +72,21 @@ export default connect(state => {
     isFetching: state.isFetching,
     error: state.error
   }
-})(ResturantCard)
+}, {fetchRest})(ResturantCard)
+
+
+
+// Mariela code 
+{/* <div>
+          <NavBar />
+          <Card>
+            <CardBody>
+              <CardImg top width="20%" src= {salad} alt="food card image " />
+              <CardText>{props.restData.name}</CardText>
+              <CardSubtitle>Menu Items: </CardSubtitle>
+              <CardSubtitle>Price: </CardSubtitle>
+              <CardSubtitle>Ratings: </CardSubtitle>
+              <CardSubtitle> Location: </CardSubtitle>
+            </CardBody>
+          </Card>
+    </div> */}
