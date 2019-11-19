@@ -40,26 +40,12 @@ const ResturantList = (props) => {
     props.fetchRest()
   }, [])
 
-  useEffect(() => {
-    const getRestaurants = () => {
-      axios
-        .get("https://veganmeets-buildweek.herokuapp.com/api/restaurants")
-        .then(response => {
-          // console.log(response.data);
-          setRestaurants(response.data);
-        })
-        .catch(error => {
-          alert(error.message);
-        });
-    };
-    getRestaurants();
-  }, []);
 
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
-    const results = restaurants.filter(
+    const results = props.restData.filter(
       descriptions =>
         descriptions.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         descriptions.city.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -78,7 +64,7 @@ const ResturantList = (props) => {
   if (searchTerm.length === 0) {
     listRender = (
       <section>
-        {restaurants.map(restaurant => {
+        {props.restData.map(restaurant => {
           return (
             <ListDivs>
               <ListLinks href={`/restaurants/${restaurant.id}`}>
