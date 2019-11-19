@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Link, Switch } from 'react-router-dom';
 import './App.css';
-import ResturantCard from "./components/ResturantCard";
+import ResturantCard from "./components/RestaurantCard";
 
 import PrivateRoute from './components/PrivateRoute';
 import Login from './components/Login';
