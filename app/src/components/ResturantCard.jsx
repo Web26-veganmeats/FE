@@ -2,6 +2,8 @@ import React,{useState, useEffect} from 'react';
 import axios from "axios";
 import salad from "./photos/salad.jpg";
 import styled from "styled-components";
+import UpdateRestForm from "./UpdateRestForm";
+
 
         const CardImg = styled.img`
             border: 2px solid green;
@@ -33,7 +35,7 @@ import styled from "styled-components";
        
 
 const ResturantCard = (props) => {
-    const {id, name, Description, Price, Ratings, Location, MenuItems } = props;
+    const {id, Description, Price, Ratings, Location, MenuItems } = props;
     const [foodCard, setFoodCard] = useState([])
 
      useEffect(()=>{
@@ -60,7 +62,7 @@ const ResturantCard = (props) => {
           <CardSubtitle>Ratings: {Ratings}</CardSubtitle>
           <CardSubtitle> Location: {Location} </CardSubtitle>
         </CardBody>
-      
+      <UpdateRestForm/>
       </Card>
     </div>
   );
