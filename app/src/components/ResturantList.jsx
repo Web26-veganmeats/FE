@@ -56,8 +56,11 @@ const ResturantList = () => {
   const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
-    const results = restaurants.filter(character =>
-      character.name.toLowerCase().includes(searchTerm.toLowerCase())
+    const results = restaurants.filter(
+      descriptions =>
+        descriptions.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        descriptions.city.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        descriptions.zip_code.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setSearchResults(results);
   }, [searchTerm, restaurants]);
@@ -67,6 +70,45 @@ const ResturantList = () => {
     setSearchTerm(event.target.value);
     console.log(event.target.value);
   };
+
+  var listRender;
+  if (searchTerm.length === 0) {
+    listRender = (
+      <section>
+        {restaurants.map(restaurant => {
+          return (
+            <ListDivs>
+              <ListLinks href={`/restaurants/${restaurant.id}`}>
+                <div>
+                  <h2>{restaurant.name}</h2>
+                  <p>City: {restaurant.city}</p>
+                  <p>Zip Code: {restaurant.zip_code}</p>
+                </div>
+              </ListLinks>
+            </ListDivs>
+          );
+        })}
+      </section>
+    );
+  } else {
+    listRender = (
+      <section className="search-form">
+        {searchResults.map(restaurants => {
+          return (
+            <ListDivs>
+              <ListLinks href={`/restaurants/${restaurants.id}`}>
+                <div>
+                  <h2>{restaurants.name}</h2>
+                  <p>City: {restaurants.city}</p>
+                  <p>Zip Code: {restaurants.zip_code}</p>
+                </div>
+              </ListLinks>
+            </ListDivs>
+          );
+        })}
+      </section>
+    );
+  }
 
   return (
     <div>
@@ -81,36 +123,7 @@ const ResturantList = () => {
         />
       </Form>
       <Button>Add Restaurant</Button>
-      <section className="search-form">
-        {searchResults.map(restaurants => {
-          return (
-            <ListDivs>
-              <ListLinks href={`/restaurants/${restaurants.id}`}>
-                <div>
-                  <h2>{restaurants.name}</h2>
-                  <p>City:{restaurants.city}</p>
-                  <p>Zip Code:{restaurants.zip_code}</p>
-                </div>
-              </ListLinks>
-            </ListDivs>
-          );
-        })}
-      </section>
-      <div>
-        {restaurants.map(restaurant => {
-          return (
-            <ListDivs>
-              <ListLinks href={`/restaurants/${restaurant.id}`}>
-                <div>
-                  <h2>{restaurant.name}</h2>
-                  <p>City: {restaurants.city}</p>
-                  <p>Zip Code: {restaurants.zip_code}</p>
-                </div>
-              </ListLinks>
-            </ListDivs>
-          );
-        })}
-      </div>
+      <section>{listRender}</section>
     </div>
   );
 };
