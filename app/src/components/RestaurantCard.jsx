@@ -1,5 +1,6 @@
 import React,{useState, useEffect} from 'react';
 import axios from "axios";
+import NavBar from './NavBar';
 import salad from "./photos/salad.jpg";
 import styled from "styled-components";
 
@@ -51,6 +52,7 @@ const ResturantCard = (props) => {
   
     return (
         <div key={id}>
+          <NavBar />
       <Card>
         <CardBody>
           <CardImg top width="20%" src= {salad} alt="food card image " />
