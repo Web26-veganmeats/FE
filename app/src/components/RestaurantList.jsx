@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { connect } from 'react-redux';
+import { fetchRest } from '../actions/actions';
 import axios from "axios";
 import styled from "styled-components";
 
@@ -29,14 +31,21 @@ const ListDivs = styled.div`
   padding: 1% 0 1% 0;
   margin: 2% 10% 2% 10%;
 `;
-const ResturantList = () => {
-  const [restaurants, setRestaurants] = useState([]);
+const ResturantList = (props) => {
+  console.log('Resturant List Props:', props)
+
+  const [restaurants, setRestaurants] = useState([]); 
+
+  useEffect(() => {
+    props.fetchRest()
+  }, [])
+
   useEffect(() => {
     const getRestaurants = () => {
       axios
         .get("https://veganmeets-buildweek.herokuapp.com/api/restaurants")
         .then(response => {
-          console.log(response.data);
+          // console.log(response.data);
           setRestaurants(response.data);
         })
         .catch(error => {
@@ -45,8 +54,10 @@ const ResturantList = () => {
     };
     getRestaurants();
   }, []);
+
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+
   useEffect(() => {
     const results = restaurants.filter(
       descriptions =>
@@ -56,11 +67,13 @@ const ResturantList = () => {
     );
     setSearchResults(results);
   }, [searchTerm, restaurants]);
+
   const changeHandler = event => {
     event.preventDefault();
     setSearchTerm(event.target.value);
     console.log(event.target.value);
   };
+
   var listRender;
   if (searchTerm.length === 0) {
     listRender = (
@@ -75,7 +88,7 @@ const ResturantList = () => {
                   <p>Zip Code: {restaurant.zip_code}</p>
                 </div>
               </ListLinks>
-            </ListDivs>
+            </ListDivs> 
           );
         })}
       </section>
@@ -116,4 +129,14 @@ const ResturantList = () => {
     </div>
   );
 };
-export default ResturantList;
+
+
+export default connect(state => {
+  return {
+    restData: state.restData,
+    isFetching: state.isFetching,
+    error: state.error
+  }
+}, {fetchRest})(ResturantList)
+
+// export default ResturantList
