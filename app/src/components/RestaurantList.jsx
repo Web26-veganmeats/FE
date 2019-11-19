@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from "react";
-<<<<<<< HEAD
 
 import NavBar from "./NavBar";
 
-=======
->>>>>>> 592f9d39b7949cd9a12099a944a1cde3938b3ad5
 import axios from "axios";
 import styled from "styled-components";
 const Button = styled.button`
   border-radius: 100px;
-  background-color: #FFA820;
-  color: #FBFCEB;
+  background-color: #ffa820;
+  color: #fbfceb;
   font-size: 1.25rem;
 `;
 const Form = styled.form`
@@ -19,18 +16,18 @@ const Form = styled.form`
 `;
 const Input = styled.input`
   text-align: center;
-  background-color: #97BE11;
+  background-color: #97be11;
   font-size: 100%;
-  color: #FBFCEB;
+  color: #fbfceb;
   margin: 2% 0 2% 0;
   border-radius: 50px;
 `;
 const ListLinks = styled.a`
   text-decoration: none;
-  color: #28590C;
+  color: #28590c;
 `;
 const ListDivs = styled.div`
-  background-color: #DFE9AC;
+  background-color: #dfe9ac;
   padding: 1% 0 1% 0;
   margin: 2% 10% 2% 10%;
 `;

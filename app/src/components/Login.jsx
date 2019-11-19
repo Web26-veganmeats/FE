@@ -1,6 +1,6 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { axiosWithAuth } from '../utils/axiosWithAuth';
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const validate = ({ username, password }) => {
   const errors = {};
@@ -16,20 +16,20 @@ const validate = ({ username, password }) => {
   return errors;
 };
 
-const Login = (props) => {
-  console.log('Login Component Props: ', props)
+const Login = props => {
+  console.log("Login Component Props: ", props);
   const handleSubmit = (values, tools) => {
     axiosWithAuth()
       .post("https://veganmeets-buildweek.herokuapp.com/api/auth/login", values)
       .then(response => {
         console.log(response);
         alert(response.data.message);
-        localStorage.setItem('token', response.data.token)
-        props.history.push('/restaurantlist')
+        localStorage.setItem("token", response.data.token);
+        props.history.push("/restaurantlist");
         tools.resetForm();
       })
       .catch(error => {
-        window(error.message);
+        alert(error.message);
       })
       .finally(() => {
         tools.setSubmitting(false);
@@ -42,6 +42,7 @@ const Login = (props) => {
       validate={validate}
       initialValues={{ username: "", password: "" }}
       render={props => {
+        console.log("login props", props);
         return (
           <div>
             <Form className="signup-form">
