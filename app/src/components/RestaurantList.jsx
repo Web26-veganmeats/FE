@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchRest } from '../actions/actions';
 
-import axios from "axios";
 import styled from "styled-components";
 
 const Button = styled.button`
@@ -113,7 +112,7 @@ const ResturantList = (props) => {
           value={searchTerm}
         />
       </Form>
-      <Button>Add Restaurant</Button>
+      <Link to='/addrestform'><Button>Add Restaurant</Button></Link>
       <section>{listRender}</section>
     </div>
   );

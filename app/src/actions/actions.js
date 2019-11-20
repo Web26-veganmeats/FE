@@ -5,6 +5,10 @@ export const FETCH_REST_LOADING = 'FETCH_REST_LOADING';
 export const FETCH_REST_SUCCESS = 'FETCH_REST_SUCCESS';
 export const FETCH_REST_FAILURE = 'FETCH_REST_FAILURE';
 
+export const CREATE_REST_START = 'CREATE_REST_START'
+export const CREATE_REST_SUCCESS = 'CREATE_REST_SUCCESS'
+export const CREATE_REST_FAILURE = 'CREATE_REST_FAILURE'
+
 // Async action creators
 
 export const fetchRest = () => dispatch => {
@@ -13,5 +17,16 @@ export const fetchRest = () => dispatch => {
         .get("https://veganmeets-buildweek.herokuapp.com/api/restaurants")
         .then(response => dispatch({ type: FETCH_REST_SUCCESS, payload: response.data }))
         .catch(error => dispatch({ type: FETCH_REST_FAILURE, payload: error }))
+}
+
+export const createRest = (newRest) => dispatch => {
+    dispatch({ type: CREATE_REST_START })
+    axiosWithAuth()
+        .post(`https://veganmeets-buildweek.herokuapp.com/api/restaurants/new`, newRest)
+        .then(response => {
+            console.log('Response from POST: ', response)
+            dispatch({ type: CREATE_REST_SUCCESS, payload: response.data })
+        })
+        .catch(error => dispatch({ type: CREATE_REST_FAILURE, payload: error }))
 }
 
