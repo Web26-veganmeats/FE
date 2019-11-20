@@ -60,6 +60,7 @@ const ResturantCard = (props) => {
                 <CardSubtitle>Ratings: </CardSubtitle>
                 <CardSubtitle>{`Located on ${rest.street_address} ${rest.city}, ${rest.state} ${rest.zip_code}`}</CardSubtitle>
               </CardBody>
+              <button>Delete Restaurant</button>
             </Card>
           )
         })}
