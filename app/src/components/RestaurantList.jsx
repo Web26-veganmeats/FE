@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
+
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchRest } from '../actions/actions';
+
 import axios from "axios";
 import styled from "styled-components";
 
 const Button = styled.button`
   border-radius: 100px;
-  background-color: #FFA820;
-  color: #FBFCEB;
+  background-color: #ffa05e;
+  color: #fbfceb;
   font-size: 1.25rem;
 `;
 const Form = styled.form`
@@ -17,18 +19,18 @@ const Form = styled.form`
 `;
 const Input = styled.input`
   text-align: center;
-  background-color: #97BE11;
+  background-color: #91a799;
   font-size: 100%;
-  color: #FBFCEB;
+  color: #fbfceb;
   margin: 2% 0 2% 0;
   border-radius: 50px;
 `;
 const ListLinks = styled.a`
   text-decoration: none;
-  color: #28590C;
+  color: #28590c;
 `;
 const ListDivs = styled.div`
-  background-color: #DFE9AC;
+  background-color: rgba(145, 167, 153, 0.75);
   padding: 1% 0 1% 0;
   margin: 2% 10% 2% 10%;
 `;
@@ -118,6 +120,7 @@ const ResturantList = (props) => {
 };
 
 
+
 export default connect(state => {
   return {
     restData: state.restData,
@@ -126,4 +129,4 @@ export default connect(state => {
   }
 }, {fetchRest})(ResturantList)
 
-// export default ResturantList
+
