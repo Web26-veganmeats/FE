@@ -4,9 +4,10 @@ import NavBar from "./NavBar";
 
 import axios from "axios";
 import styled from "styled-components";
+
 const Button = styled.button`
   border-radius: 100px;
-  background-color: #ffa820;
+  background-color: #ffa05e;
   color: #fbfceb;
   font-size: 1.25rem;
 `;
@@ -16,7 +17,7 @@ const Form = styled.form`
 `;
 const Input = styled.input`
   text-align: center;
-  background-color: #97be11;
+  background-color: #91a799;
   font-size: 100%;
   color: #fbfceb;
   margin: 2% 0 2% 0;
@@ -27,7 +28,7 @@ const ListLinks = styled.a`
   color: #28590c;
 `;
 const ListDivs = styled.div`
-  background-color: #dfe9ac;
+  background-color: rgba(145, 167, 153, 0.75);
   padding: 1% 0 1% 0;
   margin: 2% 10% 2% 10%;
 `;
