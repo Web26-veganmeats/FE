@@ -3,9 +3,10 @@ import styled from "styled-components";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import axios from "axios";
 import background from "../img/cutting_board.jpg";
+import NavBar from "./NavBar";
 
 const AddDiv = styled.div`
-  margin-top: 10vh;
+  margin-top: 5vh;
 `;
 
 const ItemDiv = styled.div`
@@ -94,6 +95,7 @@ const AddRestForm = props => {
 
   return (
     <div>
+      <NavBar />
       <img src={background} alt="background" className="form_background" />
       <Formik
         onSubmit={handleSubmit}

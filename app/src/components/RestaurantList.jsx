@@ -7,12 +7,14 @@ import { fetchRest } from "../actions/actions";
 import axios from "axios";
 import styled from "styled-components";
 import background from "../img/brocc.jpg";
+import NavBar from "./NavBar";
 
 const Button = styled.button`
   border-radius: 100px;
   background-color: #ffa820;
   color: #fbfceb;
   font-size: 1.25rem;
+  margin: 4% 0 4% 0;
 `;
 const Form = styled.form`
   text-align: center;
@@ -23,7 +25,6 @@ const Input = styled.input`
   background-color: #91a799;
   font-size: 100%;
   color: #fbfceb;
-  margin: 2% 0 2% 0;
   border-radius: 50px;
 `;
 const ListLinks = styled.a`
@@ -107,6 +108,8 @@ const ResturantList = props => {
   return (
     <div>
       <img src={background} alt="background" className="list_background" />
+      <NavBar />
+      <Button>Add Restaurant</Button>
       <Form>
         <Input
           id="search"
@@ -117,7 +120,6 @@ const ResturantList = props => {
           value={searchTerm}
         />
       </Form>
-      <Button>Add Restaurant</Button>
       <section>{listRender}</section>
     </div>
   );
