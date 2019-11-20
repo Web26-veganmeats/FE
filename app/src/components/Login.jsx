@@ -40,8 +40,9 @@ const validate = ({ username, password }) => {
   return errors;
 };
 
-const Login = props => {
-  console.log("Login Component Props: ", props);
+const Login = (props) => {
+  // console.log('Login Component Props: ', props)
+
   const handleSubmit = (values, tools) => {
     axiosWithAuth()
       .post("https://veganmeets-buildweek.herokuapp.com/api/auth/login", values)
