@@ -9,6 +9,10 @@ export const CREATE_REST_START = 'CREATE_REST_START'
 export const CREATE_REST_SUCCESS = 'CREATE_REST_SUCCESS'
 export const CREATE_REST_FAILURE = 'CREATE_REST_FAILURE'
 
+export const DELETE_REST_START = 'DELETE_REST_START'
+export const DELETE_REST_SUCCESS = 'DELETE_REST_SUCCESS'
+export const DELETE_REST_FAILURE = 'DELETE_REST_FAILURE'
+
 // Async action creators
 
 export const fetchRest = () => dispatch => {
@@ -30,3 +34,14 @@ export const createRest = (newRest) => dispatch => {
         .catch(error => dispatch({ type: CREATE_REST_FAILURE, payload: error }))
 }
 
+export const deleteRest = id => dispatch => {
+    console.log('deleteRest passed ID: ', id)
+    dispatch({ type: DELETE_REST_START })
+    axiosWithAuth()
+        .delete(`https://veganmeets-buildweek.herokuapp.com/api/restaurants/delete/${id}`)
+        .then(response => {
+            console.log('Delete Restaurant Response: ', response)
+            dispatch({ type: DELETE_REST_SUCCESS, payload: response })
+        })
+        .catch(error => dispatch({ type: DELETE_REST_FAILURE, payload: error }))
+}

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchRest } from '../actions/actions';
+import { deleteRest } from '../actions/actions';
 import NavBar from './NavBar';
 import salad from "./photos/salad.jpg";
 import styled from "styled-components";
@@ -40,6 +41,13 @@ const ResturantCard = (props) => {
     useEffect(() => {
       props.fetchRest()
     }, [])
+
+    const deleteRestaurant = (event, id) => {
+      event.preventDefault();
+      console.log('Props.match.params.id: ', props.match.params.id)
+      props.deleteRest(props.match.params.id);
+      props.history.push('/restaurantlist')
+    }
   
     return (
       <div>
@@ -60,6 +68,7 @@ const ResturantCard = (props) => {
                 <CardSubtitle>Ratings: </CardSubtitle>
                 <CardSubtitle>{`Located on ${rest.street_address} ${rest.city}, ${rest.state} ${rest.zip_code}`}</CardSubtitle>
               </CardBody>
+              <button onClick={deleteRestaurant}>Delete Restaurant</button>
             </Card>
           )
         })}
@@ -73,7 +82,7 @@ export default connect(state => {
     isFetching: state.isFetching,
     error: state.error
   }
-}, {fetchRest})(ResturantCard)
+}, {fetchRest, deleteRest})(ResturantCard)
 
 
 
