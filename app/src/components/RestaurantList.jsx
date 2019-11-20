@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchRest } from '../actions/actions';
 import axios from "axios";
@@ -67,13 +68,13 @@ const ResturantList = (props) => {
         {props.restData.map(restaurant => {
           return (
             <ListDivs>
-              <ListLinks href={`/restaurants/${restaurant.id}`}>
+              <Link to={`/restaurantcard/${restaurant.id}`}>
                 <div>
                   <h2>{restaurant.name}</h2>
                   <p>City: {restaurant.city}</p>
                   <p>Zip Code: {restaurant.zip_code}</p>
                 </div>
-              </ListLinks>
+              </Link>
             </ListDivs> 
           );
         })}

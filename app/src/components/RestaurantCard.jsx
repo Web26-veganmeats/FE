@@ -1,5 +1,4 @@
-import React,{useState, useEffect} from 'react';
-import axios from "axios";
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchRest } from '../actions/actions';
 import NavBar from './NavBar';
@@ -36,7 +35,7 @@ import styled from "styled-components";
        
 
 const ResturantCard = (props) => {
-    console.log('Restaurant Card Props: ', props.restData)
+    console.log('Restaurant Card Props: ', props)
 
     useEffect(() => {
       props.fetchRest()
@@ -44,16 +43,18 @@ const ResturantCard = (props) => {
   
     return (
       <div>
-        {props.restData.map(rest => {
+        <NavBar />
+        {props.restData.map((rest, key) => {
+          if(props.match.params.id === rest.id.toString())
           return (
-            <Card>
+            <Card key={rest.id}>
               <CardBody>
                 <CardImg top width="20%" src= {salad} alt="food card image " />
                 <CardText>{rest.name}</CardText>
                 <CardSubtitle>Phone: {rest.phone}</CardSubtitle>
-                <CardSubtitle>Menu Items: {rest.menuItems.map(item => {
+                <CardSubtitle>Menu Items: {rest.menuItems.map((item, key) => {
                   return (
-                    <div>{item.name}</div>
+                    <div key={item.id}>{item.name}</div>
                   )
                 })}</CardSubtitle>
                 <CardSubtitle>Ratings: </CardSubtitle>
