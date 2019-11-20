@@ -113,7 +113,7 @@ const ResturantList = (props) => {
           value={searchTerm}
         />
       </Form>
-      <Button>Add Restaurant</Button>
+      <Link to='/addrestform'><Button>Add Restaurant</Button></Link>
       <section>{listRender}</section>
     </div>
   );
