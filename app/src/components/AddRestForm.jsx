@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import axios from "axios";
+import background from "../img/cutting_board.jpg";
 
 const AddDiv = styled.div`
   margin-top: 10vh;
@@ -29,6 +30,7 @@ const MenuDescDiv = styled.div`
 
 const Textarea = styled.textarea`
   width: 100%;
+  padding-top: 4%;
 `;
 
 const Button = styled.button`
@@ -92,6 +94,7 @@ const AddRestForm = props => {
 
   return (
     <div>
+      <img src={background} alt="background" className="form_background" />
       <Formik
         onSubmit={handleSubmit}
         validate={validate}
@@ -174,7 +177,7 @@ const AddRestForm = props => {
                       className="field"
                       type="text"
                       name="hours"
-                      placeholder="Hours"
+                      placeholder="Hours of Operation"
                     />
                   </ItemDiv>
                   <ItemDiv>
@@ -205,7 +208,7 @@ const AddRestForm = props => {
                       className="field"
                       type="textarea"
                       name="menu_description"
-                      placeholder="Menu Item Description"
+                      placeholder="Tell us a little about the dish"
                     />
                     <Button type="submit">Submit</Button>
                   </div>
