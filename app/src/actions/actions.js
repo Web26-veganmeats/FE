@@ -1,5 +1,4 @@
 import { axiosWithAuth } from '../utils/axiosWithAuth';
-import { Action } from 'rxjs/internal/scheduler/Action';
 
 // Action Types 
 export const FETCH_REST_LOADING = 'FETCH_REST_LOADING';
@@ -36,12 +35,13 @@ export const createRest = (newRest) => dispatch => {
 }
 
 export const deleteRest = id => dispatch => {
+    console.log('deleteRest passed ID: ', id)
     dispatch({ type: DELETE_REST_START })
     axiosWithAuth()
         .delete(`https://veganmeets-buildweek.herokuapp.com/api/restaurants/delete/${id}`)
         .then(response => {
             console.log('Delete Restaurant Response: ', response)
-            dispatch({ type: DELETE_REST_SUCCESS, payload: response.data })
+            dispatch({ type: DELETE_REST_SUCCESS, payload: response })
         })
         .catch(error => dispatch({ type: DELETE_REST_FAILURE, payload: error }))
 }

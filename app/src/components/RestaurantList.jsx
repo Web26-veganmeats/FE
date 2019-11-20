@@ -34,13 +34,13 @@ const ListDivs = styled.div`
   margin: 2% 10% 2% 10%;
 `;
 const ResturantList = (props) => {
-  console.log('Resturant List Props:', props)
+  // console.log('Resturant List Props:', props)
 
   const [restaurants, setRestaurants] = useState([]); 
 
   useEffect(() => {
     props.fetchRest()
-  }, [])
+  }, [props.restData])
 
 
   const [searchTerm, setSearchTerm] = useState("");
