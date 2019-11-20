@@ -19,3 +19,14 @@ export const fetchRest = () => dispatch => {
         .catch(error => dispatch({ type: FETCH_REST_FAILURE, payload: error }))
 }
 
+export const createRest = (newRest) => dispatch => {
+    dispatch({ type: CREATE_REST_START })
+    axiosWithAuth()
+        .post(`https://veganmeets-buildweek.herokuapp.com/api/restaurants/new`, newRest)
+        .then(response => {
+            console.log('Response from POST: ', response)
+            dispatch({ type: CREATE_REST_SUCCESS, payload: response.data })
+        })
+        .catch(error => dispatch({ type: CREATE_REST_FAILURE, payload: error }))
+}
+

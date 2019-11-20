@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import styled from "styled-components";
+import { connect } from 'react-redux';
+import { createRest } from '../actions/actions';
+// import styled from "styled-components";
 
 const initialValues = {
 	name: "",
@@ -13,6 +15,8 @@ const initialValues = {
 
 const AddRestForm = (props) => {
 
+  // console.log('AddRestForm Props: ', props)
+
   const [newRest, setNewRest] = useState(initialValues)
 
   const handleChange = event => {
@@ -20,9 +24,16 @@ const AddRestForm = (props) => {
     console.log(newRest)
   }
 
+  const handleSubmit = event => {
+    event.preventDefault();
+    console.log('Submit Working')
+    props.createRest(newRest)
+    props.history.push('/restaurantlist')
+  }
+
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label>Restaurant Name</label>
         <br />
         <input
@@ -85,6 +96,8 @@ const AddRestForm = (props) => {
           value={newRest.hours}
           onChange={handleChange}
         />
+        <br />
+        <button>Submit</button>
       </form>
     </div>
   )
@@ -92,7 +105,13 @@ const AddRestForm = (props) => {
 
 
 
-export default AddRestForm;
+export default connect(state => {
+  return {
+    restData: state.restData,
+    isFetching: state.isFetching,
+    error: state.error
+  }
+}, {createRest})(AddRestForm)
 
 
 
