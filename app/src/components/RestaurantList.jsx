@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from "react";
+
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { fetchRest } from '../actions/actions';
+
 import axios from "axios";
 import styled from "styled-components";
+
 const Button = styled.button`
   border-radius: 100px;
-  background-color: #FFA820;
-  color: #FBFCEB;
+  background-color: #ffa05e;
+  color: #fbfceb;
   font-size: 1.25rem;
 `;
 const Form = styled.form`
@@ -13,41 +19,36 @@ const Form = styled.form`
 `;
 const Input = styled.input`
   text-align: center;
-  background-color: #97BE11;
+  background-color: #91a799;
   font-size: 100%;
-  color: #FBFCEB;
+  color: #fbfceb;
   margin: 2% 0 2% 0;
   border-radius: 50px;
 `;
 const ListLinks = styled.a`
   text-decoration: none;
-  color: #28590C;
+  color: #28590c;
 `;
 const ListDivs = styled.div`
-  background-color: #DFE9AC;
+  background-color: rgba(145, 167, 153, 0.75);
   padding: 1% 0 1% 0;
   margin: 2% 10% 2% 10%;
 `;
-const ResturantList = () => {
-  const [restaurants, setRestaurants] = useState([]);
+const ResturantList = (props) => {
+  console.log('Resturant List Props:', props)
+
+  const [restaurants, setRestaurants] = useState([]); 
+
   useEffect(() => {
-    const getRestaurants = () => {
-      axios
-        .get("https://veganmeets-buildweek.herokuapp.com/api/restaurants")
-        .then(response => {
-          console.log(response.data);
-          setRestaurants(response.data);
-        })
-        .catch(error => {
-          alert(error.message);
-        });
-    };
-    getRestaurants();
-  }, []);
+    props.fetchRest()
+  }, [])
+
+
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+
   useEffect(() => {
-    const results = restaurants.filter(
+    const results = props.restData.filter(
       descriptions =>
         descriptions.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         descriptions.city.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -55,26 +56,28 @@ const ResturantList = () => {
     );
     setSearchResults(results);
   }, [searchTerm, restaurants]);
+
   const changeHandler = event => {
     event.preventDefault();
     setSearchTerm(event.target.value);
     console.log(event.target.value);
   };
+
   var listRender;
   if (searchTerm.length === 0) {
     listRender = (
       <section>
-        {restaurants.map(restaurant => {
+        {props.restData.map(restaurant => {
           return (
             <ListDivs>
-              <ListLinks href={`/restaurants/${restaurant.id}`}>
+              <Link to={`/restaurantcard/${restaurant.id}`}>
                 <div>
                   <h2>{restaurant.name}</h2>
                   <p>City: {restaurant.city}</p>
                   <p>Zip Code: {restaurant.zip_code}</p>
                 </div>
-              </ListLinks>
-            </ListDivs>
+              </Link>
+            </ListDivs> 
           );
         })}
       </section>
@@ -115,4 +118,15 @@ const ResturantList = () => {
     </div>
   );
 };
-export default ResturantList;
+
+
+
+export default connect(state => {
+  return {
+    restData: state.restData,
+    isFetching: state.isFetching,
+    error: state.error
+  }
+}, {fetchRest})(ResturantList)
+
+

@@ -31,9 +31,28 @@
   height: 120px;
 }
 
+.add-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 400px;
+  margin: 0 10% 0 10%;
+  background-image: #dfe9ac;
+  padding: 2% 5% 0 5%;
+}
+
 .error {
   color: red;
   font-size: 70%;
+}
+
+.field {
+  background-color: #91a799;
+  color: #fbfceb;
+  font-size: 0.95rem;
+  margin-top: 1%;
+  border-radius: 20px;
+  text-align: center;
 }
 
 ::placeholder {

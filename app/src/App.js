@@ -16,10 +16,10 @@ function App() {
   return (
     <div className="App">
       <Switch>
-        <Route exact path='/login' component={Login} />
+        <Route exact path='/' component={Login} />
         <Route path='/register' component={Register} />
         <PrivateRoute path='/restaurantlist' component={RestaurantList} />
-        <PrivateRoute path='/restaurantcard' component={RestaurantCard} />
+        <PrivateRoute path='/restaurantcard/:id' component={RestaurantCard} />
         <PrivateRoute path='/addrestform' component={AddRestForm} />
         <PrivateRoute path='/updaterestform' component={UpdateRestForm} />
       </Switch>
