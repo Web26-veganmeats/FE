@@ -45,7 +45,7 @@ const ResturantCard = (props) => {
       event.preventDefault();
       console.log('Props.match.params.id: ', props.match.params.id)
       props.deleteRest(props.match.params.id);
-      props.history.push('/restaurantlist')
+      // props.history.push('/restaurantlist')
     }
   
     return (

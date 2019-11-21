@@ -28,7 +28,7 @@ const AddRestForm = (props) => {
     event.preventDefault();
     // console.log('Submit Working')
     props.createRest(newRest)
-    props.history.push('/restaurantlist')
+    // props.history.push('/restaurantlist')
   }
 
   return (

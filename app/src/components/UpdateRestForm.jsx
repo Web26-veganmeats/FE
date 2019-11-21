@@ -27,9 +27,9 @@ const handleSubmit = (event) => {
 event.preventDefault();
 // console.log('handleSubmit updateRest Object: ', updateRest)
 props.updateRest(updateRest, props.match.params.id)
-props.history.push(`/restaurantlist`)
+// props.history.push(`/restaurantlist`)
 }
- 
+
 return (
 <div>
     <form onSubmit={handleSubmit}>
