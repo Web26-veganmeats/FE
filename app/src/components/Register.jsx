@@ -4,7 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const SignupDiv = styled.div`
-  margin-top: 20vh;
+  margin-top: 15vh;
   h2 {
     font-size: 1.75rem;
     color: #507657;
@@ -46,6 +46,8 @@ const SignupDiv = styled.div`
 
 const P = styled.p`
   font-style: italic;
+  margin-top: 6%;
+  color: #91a799;
 `;
 
 const validate = ({ username, password }) => {
@@ -83,6 +85,10 @@ const Register = props => {
       });
   };
 
+  const routeChange = () => {
+    props.history.push("/");
+  };
+
   return (
     <Formik
       onSubmit={handleSubmit}
@@ -115,7 +121,8 @@ const Register = props => {
                 {props.isSubmitting ? "Submitting" : "Sign Up"}
               </button>
             </Form>
-            {/* <P>or</P> */}
+            <P>or</P>
+            <button onClick={routeChange}>Sign In</button>
           </SignupDiv>
         );
       }}
