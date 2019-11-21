@@ -29,7 +29,7 @@ event.preventDefault();
 props.updateRest(updateRest, props.match.params.id)
 props.history.push(`/restaurantlist`)
 }
-
+ 
 return (
 <div>
     <form onSubmit={handleSubmit}>
