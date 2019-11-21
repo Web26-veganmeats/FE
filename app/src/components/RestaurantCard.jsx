@@ -1,7 +1,9 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
-import { fetchRest } from "../actions/actions";
-import NavBar from "./NavBar";
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { fetchRest } from '../actions/actions';
+import { deleteRest } from '../actions/actions';
+import NavBar from './NavBar';
 import salad from "./photos/salad.jpg";
 import styled from "styled-components";
 import background from "../img/sparse.jpg";
@@ -18,12 +20,12 @@ const Card = styled.div`
 `;
 
 const CardBody = styled.div`
-             width: 100%
-            margin: 20px;
-            h3{
-              color: #28590c;
-            }
-        `;
+width: 100%
+margin: 20px;
+h3{
+  color: #28590c;
+}
+`;
 
 const CardText = styled.h1`
   font-size: 1.5rem;
@@ -37,19 +39,31 @@ const CardSubtitle = styled.h3`
   color: black;
 `;
 
-const ResturantCard = props => {
-  console.log("Restaurant Card Props: ", props);
+const CardSubtitle = styled.h3`
+    font-size: 1.4rem;
+    font-family: 'Raleway', sans-serif;
+    color: black  
+`;
+  
+const ResturantCard = (props) => {
+    console.log('Restaurant Card Props: ', props)
 
-  useEffect(() => {
-    props.fetchRest();
-  }, []);
+    useEffect(() => {
+      props.fetchRest()
+    }, [])
 
-  return (
-    <div>
-      <NavBar />
-      <img src={background} alt="background" className="form_background" />
-      {props.restData.map((rest, key) => {
-        if (props.match.params.id === rest.id.toString())
+    const deleteRestaurant = (event, id) => {
+      event.preventDefault();
+      console.log('Props.match.params.id: ', props.match.params.id)
+      props.deleteRest(props.match.params.id);
+      // props.history.push('/restaurantlist')
+    }
+  
+    return (
+      <div>
+        <NavBar />
+        {props.restData.map((rest, key) => {
+          if(props.match.params.id === rest.id.toString())
           return (
             <Card key={rest.id}>
               <CardBody>
@@ -65,6 +79,8 @@ const ResturantCard = props => {
                 <CardSubtitle>Ratings: </CardSubtitle>
                 <CardSubtitle>{`Located on ${rest.street_address} ${rest.city}, ${rest.state} ${rest.zip_code}`}</CardSubtitle>
               </CardBody>
+              <button onClick={deleteRestaurant}>Delete Restaurant</button>
+              <Link to={`/updaterestform/${props.match.params.id}`}><button>Edit Restaurant</button></Link>
             </Card>
           );
       })}
@@ -72,16 +88,16 @@ const ResturantCard = props => {
   );
 };
 
-export default connect(
-  state => {
-    return {
-      restData: state.restData,
-      isFetching: state.isFetching,
-      error: state.error
-    };
-  },
-  { fetchRest }
-)(ResturantCard);
+
+export default connect(state => {
+  return {
+    restData: state.restData,
+    isFetching: state.isFetching,
+    error: state.error
+  }
+}, {fetchRest, deleteRest})(ResturantCard)
+
+
 
 // Mariela code
 {

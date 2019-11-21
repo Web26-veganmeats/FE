@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchRest } from "../actions/actions";
 
-import axios from "axios";
 import styled from "styled-components";
 import background from "../img/brocc.jpg";
 import NavBar from "./NavBar";
@@ -39,8 +38,10 @@ const ListDivs = styled.div`
   padding: 1% 0 1% 0;
   margin: 2% 10% 2% 10%;
 `;
-const ResturantList = props => {
-  console.log("Resturant List Props:", props);
+
+const ResturantList = (props) => {
+  // console.log('Resturant List Props:', props)
+
 
   const [restaurants, setRestaurants] = useState([]);
 
@@ -120,6 +121,9 @@ const ResturantList = props => {
           value={searchTerm}
         />
       </Form>
+
+      <Link to='/addrestform'><Button>Add Restaurant</Button></Link>
+
       <section>{listRender}</section>
     </div>
   );

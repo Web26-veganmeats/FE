@@ -1,7 +1,6 @@
 import React from 'react';
-import { Route, Link, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import './App.css';
-import ResturantCard from "./components/RestaurantCard";
 
 import PrivateRoute from './components/PrivateRoute';
 import Login from './components/Login';
@@ -21,7 +20,7 @@ function App() {
         <PrivateRoute path='/restaurantlist' component={RestaurantList} />
         <PrivateRoute path='/restaurantcard/:id' component={RestaurantCard} />
         <PrivateRoute path='/addrestform' component={AddRestForm} />
-        <PrivateRoute path='/updaterestform' component={UpdateRestForm} />
+        <PrivateRoute path='/updaterestform/:id' component={UpdateRestForm} />
       </Switch>
     </div>
   );

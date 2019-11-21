@@ -71,9 +71,8 @@ const Register = props => {
       )
       .then(response => {
         console.log(response);
-        window(response.data.message);
         localStorage.setItem("token", response.data.token);
-        props.history.push("/restaurantList");
+        props.history.push("/restaurantlist");
         tools.resetForm();
       })
       .catch(error => {
