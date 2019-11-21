@@ -106,7 +106,7 @@ const ResturantList = (props) => {
       </section>
     );
   }
-  return (
+  return ( 
     <div>
       <img src={background} alt="background" className="list_background" />
       <NavBar />
