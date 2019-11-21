@@ -87,7 +87,7 @@ const Register = props => {
   };
 
   const newRoute = () => {
-    props.history.push("/");
+    props.history.push("/login");
   };
 
   return (
