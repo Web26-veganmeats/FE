@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from 'react-redux';
-// import { createRest } from '../actions/actions';
+import { updateRest } from '../actions/actions';
 // import styled from "styled-components";
 
 const initialValues = {
@@ -20,14 +20,14 @@ const [updateRest, setUpdateRest] = useState(initialValues)
 
 const handleChange = event => {
 setUpdateRest({ ...updateRest, [event.target.name]: event.target.value })
-console.log(updateRest)
+// console.log(updateRest)
 }
 
-const handleSubmit = event => {
+const handleSubmit = (event) => {
 event.preventDefault();
-console.log('Submit Working')
-// props.createRest(newRest)
-// props.history.push('/restaurantcard/') add dynamic push back to updated card
+// console.log('handleSubmit updateRest Object: ', updateRest)
+props.updateRest(updateRest, props.match.params.id)
+props.history.push(`/restaurantlist`)
 }
 
 return (
@@ -110,4 +110,4 @@ restData: state.restData,
 isFetching: state.isFetching,
 error: state.error
 }
-}, {})(UpdateRestForm)
+}, {updateRest})(UpdateRestForm)

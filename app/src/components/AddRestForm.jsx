@@ -21,12 +21,12 @@ const AddRestForm = (props) => {
 
   const handleChange = event => {
     setNewRest({ ...newRest, [event.target.name]: event.target.value })
-    console.log(newRest)
+    // console.log(newRest)
   }
 
   const handleSubmit = event => {
     event.preventDefault();
-    console.log('Submit Working')
+    // console.log('Submit Working')
     props.createRest(newRest)
     props.history.push('/restaurantlist')
   }

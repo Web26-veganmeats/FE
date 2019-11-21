@@ -77,6 +77,24 @@ function reducer(state = initialState, action) {
                 restData: [],
                 error: action.payload
             }
+        case UPDATE_REST_START:
+            return {
+                ...state,
+                isFetching: true,
+                error: null
+            }
+        case UPDATE_REST_SUCCESS:
+            return {
+                ...state,
+                restData: [...state, action.payload],
+                error: null
+            }
+        case UPDATE_REST_FAILURE:
+            return {
+                ...state,
+                restData: [],
+                error: action.payload
+            }
         default: 
             return state;
     }

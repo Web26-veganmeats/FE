@@ -39,7 +39,7 @@ const ResturantCard = (props) => {
 
     useEffect(() => {
       props.fetchRest()
-    }, [props.restData])
+    }, [])
 
     const deleteRestaurant = (event, id) => {
       event.preventDefault();

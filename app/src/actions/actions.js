@@ -50,11 +50,11 @@ export const deleteRest = id => dispatch => {
         .catch(error => dispatch({ type: DELETE_REST_FAILURE, payload: error }))
 }
 
-export const updateRest = editedRest => dispatch => {
-    console.log('editedRest getting passed in: ', editedRest)
+export const updateRest = (editedRest, id) => dispatch => {
+    console.log('editedRest getting passed in: ', id)
     dispatch({ type: UPDATE_REST_START })
     axiosWithAuth()
-        .put(`https://veganmeets-buildweek.herokuapp.com/api/restaurants/update/${editedRest.id}`, editedRest)
+        .put(`https://veganmeets-buildweek.herokuapp.com/api/restaurants/update/${id}`, editedRest)
         .then(response => {
             console.log('updateRest response: ', response)
             dispatch({ type: UPDATE_REST_SUCCESS, payload: response.data })

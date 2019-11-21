@@ -40,7 +40,7 @@ const ResturantList = (props) => {
 
   useEffect(() => {
     props.fetchRest()
-  }, [props.restData])
+  }, [])
 
 
   const [searchTerm, setSearchTerm] = useState("");
