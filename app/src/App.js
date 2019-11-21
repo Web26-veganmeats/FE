@@ -20,7 +20,7 @@ function App() {
         <PrivateRoute path='/restaurantlist' component={RestaurantList} />
         <PrivateRoute path='/restaurantcard/:id' component={RestaurantCard} />
         <PrivateRoute path='/addrestform' component={AddRestForm} />
-        <PrivateRoute path='/updaterestform' component={UpdateRestForm} />
+        <PrivateRoute path='/updaterestform/:id' component={UpdateRestForm} />
       </Switch>
     </div>
   );

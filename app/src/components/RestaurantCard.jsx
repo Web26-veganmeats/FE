@@ -39,7 +39,7 @@ const ResturantCard = (props) => {
 
     useEffect(() => {
       props.fetchRest()
-    }, [])
+    }, [props.restData])
 
     const deleteRestaurant = (event, id) => {
       event.preventDefault();
@@ -68,7 +68,7 @@ const ResturantCard = (props) => {
                 <CardSubtitle>{`Located on ${rest.street_address} ${rest.city}, ${rest.state} ${rest.zip_code}`}</CardSubtitle>
               </CardBody>
               <button onClick={deleteRestaurant}>Delete Restaurant</button>
-              <Link to='/updaterestform'><button>Edit Restaurant</button></Link>
+              <Link to={`/updaterestform/${props.match.params.id}`}><button>Edit Restaurant</button></Link>
             </Card>
           )
         })}
