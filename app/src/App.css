@@ -37,8 +37,26 @@
   justify-content: space-between;
   height: 400px;
   margin: 0 10% 0 10%;
-  background-image: #dfe9ac;
-  padding: 2% 5% 0 5%;
+  padding: 2% 5% 2% 5%;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.form_background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+
+.list_background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: auto;
+  z-index: -1;
 }
 
 .error {
@@ -57,4 +75,13 @@
 
 ::placeholder {
   color: #fbfceb;
+}
+
+a {
+  text-decoration: none;
+  color: #28590c;
+}
+
+.list-link-h2 {
+  color: #819486;
 }

@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from "react";
 
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { fetchRest } from '../actions/actions';
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { fetchRest } from "../actions/actions";
 
 import styled from "styled-components";
+import background from "../img/brocc.jpg";
+import NavBar from "./NavBar";
 
 const Button = styled.button`
   border-radius: 100px;
-  background-color: #ffa05e;
+  background-color: #ffa820;
   color: #fbfceb;
   font-size: 1.25rem;
+  margin: 4% 0 4% 0;
 `;
 const Form = styled.form`
   text-align: center;
@@ -21,27 +24,30 @@ const Input = styled.input`
   background-color: #91a799;
   font-size: 100%;
   color: #fbfceb;
-  margin: 2% 0 2% 0;
   border-radius: 50px;
 `;
 const ListLinks = styled.a`
   text-decoration: none;
   color: #28590c;
+  h2 {
+    color: #819486;
+  }
 `;
 const ListDivs = styled.div`
-  background-color: rgba(145, 167, 153, 0.75);
+  background-color: rgba(255, 255, 255, 0.8);
   padding: 1% 0 1% 0;
   margin: 2% 10% 2% 10%;
 `;
+
 const ResturantList = (props) => {
   // console.log('Resturant List Props:', props)
 
-  const [restaurants, setRestaurants] = useState([]); 
+
+  const [restaurants, setRestaurants] = useState([]);
 
   useEffect(() => {
-    props.fetchRest()
-  }, [])
-
+    props.fetchRest();
+  }, []);
 
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
@@ -71,12 +77,12 @@ const ResturantList = (props) => {
             <ListDivs>
               <Link to={`/restaurantcard/${restaurant.id}`}>
                 <div>
-                  <h2>{restaurant.name}</h2>
+                  <h2 className="list-link-h2">{restaurant.name}</h2>
                   <p>City: {restaurant.city}</p>
                   <p>Zip Code: {restaurant.zip_code}</p>
                 </div>
               </Link>
-            </ListDivs> 
+            </ListDivs>
           );
         })}
       </section>
@@ -102,6 +108,9 @@ const ResturantList = (props) => {
   }
   return (
     <div>
+      <img src={background} alt="background" className="list_background" />
+      <NavBar />
+      <Button>Add Restaurant</Button>
       <Form>
         <Input
           id="search"
@@ -112,20 +121,21 @@ const ResturantList = (props) => {
           value={searchTerm}
         />
       </Form>
+
       <Link to='/addrestform'><Button>Add Restaurant</Button></Link>
+
       <section>{listRender}</section>
     </div>
   );
 };
 
-
-
-export default connect(state => {
-  return {
-    restData: state.restData,
-    isFetching: state.isFetching,
-    error: state.error
-  }
-}, {fetchRest})(ResturantList)
-
-
+export default connect(
+  state => {
+    return {
+      restData: state.restData,
+      isFetching: state.isFetching,
+      error: state.error
+    };
+  },
+  { fetchRest }
+)(ResturantList);

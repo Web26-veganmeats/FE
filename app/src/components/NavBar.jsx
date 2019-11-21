@@ -7,14 +7,14 @@ const NavDiv = styled.div`
   width: 86%;
   justify-content: space-between;
   text-decoration: none;
-  background-color: #29590d;
-  color: #a3e1d9;
+  background-color: #91a799;
+  color: #28590c;
   padding: 2% 7% 2% 7%;
 `;
 
 const NavLinks = styled.a`
   text-decoration: none;
-  color: #a3e1d9;
+  color: #fbfceb;
   font-size: 1.25rem;
 `;
 

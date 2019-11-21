@@ -33,6 +33,7 @@ const AddRestForm = (props) => {
 
   return (
     <div>
+
       <form onSubmit={handleSubmit}>
         <label>Restaurant Name</label>
         <br />
