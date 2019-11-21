@@ -39,8 +39,9 @@ const ListDivs = styled.div`
   margin: 2% 10% 2% 10%;
 `;
 
-const ResturantList = props => {
+const ResturantList = (props) => {
   // console.log('Resturant List Props:', props)
+
 
   const [restaurants, setRestaurants] = useState([]);
 
@@ -105,13 +106,10 @@ const ResturantList = props => {
       </section>
     );
   }
-  return (
+  return ( 
     <div>
       <img src={background} alt="background" className="list_background" />
       <NavBar />
-      <Link to="/addrestform">
-        <Button>Add Restaurant</Button>
-      </Link>
       <Form>
         <Input
           id="search"
@@ -122,6 +120,8 @@ const ResturantList = props => {
           value={searchTerm}
         />
       </Form>
+
+      <Link to='/addrestform'><Button>Add Restaurant</Button></Link>
 
       <section>{listRender}</section>
     </div>
