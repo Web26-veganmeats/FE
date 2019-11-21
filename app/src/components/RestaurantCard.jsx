@@ -39,11 +39,6 @@ const CardSubtitle = styled.h3`
   color: black;
 `;
 
-const CardSubtitle = styled.h3`
-    font-size: 1.4rem;
-    font-family: 'Raleway', sans-serif;
-    color: black  
-`;
   
 const ResturantCard = (props) => {
     console.log('Restaurant Card Props: ', props)

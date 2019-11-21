@@ -110,7 +110,6 @@ const ResturantList = (props) => {
     <div>
       <img src={background} alt="background" className="list_background" />
       <NavBar />
-      <Button>Add Restaurant</Button>
       <Form>
         <Input
           id="search"
