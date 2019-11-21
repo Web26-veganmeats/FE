@@ -29,7 +29,7 @@ const NavBar = () => {
   return (
     <div>
       <NavDiv>
-        <NavLinks href="/restaurantlist">Vegan Eats </NavLinks>
+        <NavLinks href="https://fe-xi-tan.now.sh/restaurantlist">Vegan Eats </NavLinks>
         <InnerNav>
           <div>
             <NavLinks href="/restaurantlist">Home</NavLinks>
