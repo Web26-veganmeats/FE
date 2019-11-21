@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { fetchRest } from '../actions/actions';
-import { deleteRest } from '../actions/actions';
-import NavBar from './NavBar';
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { fetchRest } from "../actions/actions";
+import { deleteRest } from "../actions/actions";
+import NavBar from "./NavBar";
 import salad from "./photos/salad.jpg";
 import styled from "styled-components";
 import background from "../img/sparse.jpg";
@@ -18,6 +18,19 @@ const Card = styled.div`
   background-color: rgba(255, 255, 255, 0.75);
   margin: 3% 10% 3% 10%;
   padding: 3% 10% 3% 10%;
+
+  button {
+    background-color: #f9ae40;
+    border-radius: 100px;
+    color: #fbfceb;
+    font-size: 1.2rem;
+    margin: 2% 2% 2% 2%;
+    padding: 0.25% 2.5% 0.25% 2.5%;
+
+    :hover {
+      background-color: #ffa05e;
+      transition: 0.75s;
+    }
 `;
 
 const CardBody = styled.div`
@@ -40,26 +53,26 @@ const CardSubtitle = styled.h3`
   color: black;
 `;
 
-  
-const ResturantCard = (props) => {
-    console.log('Restaurant Card Props: ', props)
+const ResturantCard = props => {
+  console.log("Restaurant Card Props: ", props);
 
-    useEffect(() => {
-      props.fetchRest()
-    }, [])
+  useEffect(() => {
+    props.fetchRest();
+  }, []);
 
-    const deleteRestaurant = (event, id) => {
-      event.preventDefault();
-      console.log('Props.match.params.id: ', props.match.params.id)
-      props.deleteRest(props.match.params.id);
-      // props.history.push('/restaurantlist')
-    }
-  
-    return (
-      <div>
-        <NavBar />
-        {props.restData.map((rest, key) => {
-          if(props.match.params.id === rest.id.toString())
+  const deleteRestaurant = (event, id) => {
+    event.preventDefault();
+    console.log("Props.match.params.id: ", props.match.params.id);
+    props.deleteRest(props.match.params.id);
+    // props.history.push('/restaurantlist')
+  };
+
+  return (
+    <div>
+      <NavBar />
+      <img src={background} alt="background" className="list_background" />
+      {props.restData.map((rest, key) => {
+        if (props.match.params.id === rest.id.toString())
           return (
             <Card key={rest.id}>
               <CardBody>
@@ -77,7 +90,9 @@ const ResturantCard = (props) => {
                 <Maps key={key} rest={rest} />
               </CardBody>
               <button onClick={deleteRestaurant}>Delete Restaurant</button>
-              <Link to={`/updaterestform/${props.match.params.id}`}><button>Edit Restaurant</button></Link>
+              <Link to={`/updaterestform/${props.match.params.id}`}>
+                <button>Edit Restaurant</button>
+              </Link>
             </Card>
           );
       })}
@@ -85,16 +100,16 @@ const ResturantCard = (props) => {
   );
 };
 
-
-export default connect(state => {
-  return {
-    restData: state.restData,
-    isFetching: state.isFetching,
-    error: state.error
-  }
-}, {fetchRest, deleteRest})(ResturantCard)
-
-
+export default connect(
+  state => {
+    return {
+      restData: state.restData,
+      isFetching: state.isFetching,
+      error: state.error
+    };
+  },
+  { fetchRest, deleteRest }
+)(ResturantCard);
 
 // Mariela code
 {
