@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { connect } from 'react-redux';
 import { createRest } from '../actions/actions';
+import NavBar from './NavBar';
 // import styled from "styled-components";
 
 const initialValues = {
@@ -33,7 +34,7 @@ const AddRestForm = (props) => {
 
   return (
     <div>
-
+      <NavBar />
       <form onSubmit={handleSubmit}>
         <label>Restaurant Name</label>
         <br />

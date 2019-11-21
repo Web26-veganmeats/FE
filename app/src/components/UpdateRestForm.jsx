@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { connect } from 'react-redux';
 import { updateRest } from '../actions/actions';
+import NavBar from './NavBar';
 // import styled from "styled-components";
 
 const initialValues = {
@@ -32,6 +33,7 @@ props.updateRest(updateRest, props.match.params.id)
 
 return (
 <div>
+    <NavBar />
     <form onSubmit={handleSubmit}>
     <label>Restaurant Name</label>
     <br />
