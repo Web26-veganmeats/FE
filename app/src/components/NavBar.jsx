@@ -20,7 +20,7 @@ const NavLinks = styled.a`
 
 const InnerNav = styled.div`
   display: flex;
-  width: 15%;
+  width: 30%;
   justify-content: space-between;
   list-style: none;
 `;
@@ -29,14 +29,16 @@ const NavBar = () => {
   return (
     <div>
       <NavDiv>
-        <NavLinks href="/">Vegan Eats </NavLinks>
-        <i class="fas fa-seedling"></i>
+        <NavLinks href="/restaurantlist">Vegan Eats </NavLinks>
         <InnerNav>
           <div>
-            <NavLinks href="/">Home</NavLinks>
+            <NavLinks href="/restaurantlist">Home</NavLinks>
           </div>
           <div>
-            <NavLinks href="/signin/">Sign In</NavLinks>
+            <NavLinks href="/">Sign In</NavLinks>
+          </div>
+          <div>
+            <NavLinks href="/">Sign Out</NavLinks>
           </div>
         </InnerNav>
       </NavDiv>
