@@ -42,7 +42,7 @@ const CardSubtitle = styled.h3`
 
   
 const ResturantCard = (props) => {
-    console.log('Restaurant Card Props: ', props)
+    console.log('Restaurant Card Props: ', props)  
 
     useEffect(() => {
       props.fetchRest()
@@ -50,6 +50,7 @@ const ResturantCard = (props) => {
 
     const deleteRestaurant = (event, id) => {
       event.preventDefault();
+      console.log('clicked delete restaurant')
       console.log('Props.match.params.id: ', props.match.params.id)
       props.deleteRest(props.match.params.id);
       // props.history.push('/restaurantlist')
@@ -74,7 +75,7 @@ const ResturantCard = (props) => {
                 </CardSubtitle>
                 <CardSubtitle>Ratings: </CardSubtitle>
                 <CardSubtitle>{`Located on ${rest.street_address} ${rest.city}, ${rest.state} ${rest.zip_code}`}</CardSubtitle>
-                <Maps key={key} rest={rest} />
+                {/* <Maps key={key} rest={rest} /> */}
               </CardBody>
               <button onClick={deleteRestaurant}>Delete Restaurant</button>
               <Link to={`/updaterestform/${props.match.params.id}`}><button>Edit Restaurant</button></Link>
