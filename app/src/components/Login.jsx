@@ -47,7 +47,7 @@ const Login = (props) => {
     axiosWithAuth()
       .post("https://veganmeets-buildweek.herokuapp.com/api/auth/login", values)
       .then(response => {
-        console.log(response);
+        // console.log(response);
         alert(response.data.message);
         localStorage.setItem("token", response.data.token);
         props.history.push("/restaurantlist");
@@ -67,7 +67,7 @@ const Login = (props) => {
       validate={validate}
       initialValues={{ username: "", password: "" }}
       render={props => {
-        console.log("login props", props);
+        // console.log("login props", props);
         return (
           <SigninDiv>
             <Form className="signup-form">

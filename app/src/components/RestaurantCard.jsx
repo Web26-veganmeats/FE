@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchRest } from '../actions/actions';
 import { deleteRest } from '../actions/actions';
@@ -12,12 +13,11 @@ import styled from "styled-components";
         `;
         
         const Card = styled.div`
-           
             background-color:#ebeee2;
         `;
 
         const CardBody = styled.div`
-             width: 100%
+            width: 100%
             margin: 20px;
 
         `;
@@ -33,8 +33,7 @@ import styled from "styled-components";
             font-family: 'Raleway', sans-serif;
             color: black  
         `;
-       
-
+  
 const ResturantCard = (props) => {
     console.log('Restaurant Card Props: ', props)
 
@@ -46,7 +45,7 @@ const ResturantCard = (props) => {
       event.preventDefault();
       console.log('Props.match.params.id: ', props.match.params.id)
       props.deleteRest(props.match.params.id);
-      props.history.push('/restaurantlist')
+      // props.history.push('/restaurantlist')
     }
   
     return (
@@ -69,6 +68,7 @@ const ResturantCard = (props) => {
                 <CardSubtitle>{`Located on ${rest.street_address} ${rest.city}, ${rest.state} ${rest.zip_code}`}</CardSubtitle>
               </CardBody>
               <button onClick={deleteRestaurant}>Delete Restaurant</button>
+              <Link to={`/updaterestform/${props.match.params.id}`}><button>Edit Restaurant</button></Link>
             </Card>
           )
         })}

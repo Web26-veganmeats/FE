@@ -7,7 +7,10 @@ import {
     CREATE_REST_FAILURE,
     DELETE_REST_START,
     DELETE_REST_SUCCESS,
-    DELETE_REST_FAILURE
+    DELETE_REST_FAILURE,
+    UPDATE_REST_START,
+    UPDATE_REST_SUCCESS,
+    UPDATE_REST_FAILURE
 } from '../actions/actions';
 
 const initialState = {
@@ -69,6 +72,24 @@ function reducer(state = initialState, action) {
                 error: null
             }
         case DELETE_REST_FAILURE:
+            return {
+                ...state,
+                restData: [],
+                error: action.payload
+            }
+        case UPDATE_REST_START:
+            return {
+                ...state,
+                isFetching: true,
+                error: null
+            }
+        case UPDATE_REST_SUCCESS:
+            return {
+                ...state,
+                restData: [...state, action.payload],
+                error: null
+            }
+        case UPDATE_REST_FAILURE:
             return {
                 ...state,
                 restData: [],
