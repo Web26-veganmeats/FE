@@ -7,6 +7,7 @@ import NavBar from './NavBar';
 import salad from "./photos/salad.jpg";
 import styled from "styled-components";
 import background from "../img/sparse.jpg";
+import Maps from "./Map";
 
 const CardImg = styled.img`
   border: 2px solid #91a799;
@@ -73,6 +74,7 @@ const ResturantCard = (props) => {
                 </CardSubtitle>
                 <CardSubtitle>Ratings: </CardSubtitle>
                 <CardSubtitle>{`Located on ${rest.street_address} ${rest.city}, ${rest.state} ${rest.zip_code}`}</CardSubtitle>
+                <Maps key={key} rest={rest} />
               </CardBody>
               <button onClick={deleteRestaurant}>Delete Restaurant</button>
               <Link to={`/updaterestform/${props.match.params.id}`}><button>Edit Restaurant</button></Link>

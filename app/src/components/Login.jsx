@@ -6,6 +6,26 @@ import styled from "styled-components";
 const SigninDiv = styled.div`
   margin-top: 20vh;
 
+  h2 {
+    font-size: 1.75rem;
+    color: #507657;
+  }
+  h1 {
+    font-size: 3.25rem;
+    background: -webkit-linear-gradient(
+      305deg,
+      #ffa05e,
+      #ffa05e,
+      #ffa05e,
+      #91a799,
+      #ffa05e,
+      #ffa05e,
+      #ffa05e
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
   button {
     background-color: #f9ae40;
     border-radius: 100px;
@@ -40,7 +60,7 @@ const validate = ({ username, password }) => {
   return errors;
 };
 
-const Login = (props) => {
+const Login = props => {
   // console.log('Login Component Props: ', props)
 
   const handleSubmit = (values, tools) => {
@@ -70,6 +90,8 @@ const Login = (props) => {
         // console.log("login props", props);
         return (
           <SigninDiv>
+            <h1>Vegan Meets</h1>
+            <h2>Sign in to find vegan food in your area</h2>
             <Form className="signup-form">
               <label htmlFor="username">Sign In</label>
               <ErrorMessage name="username" component="div" className="error" />
