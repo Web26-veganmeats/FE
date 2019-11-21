@@ -7,7 +7,10 @@ import {
     CREATE_REST_FAILURE,
     DELETE_REST_START,
     DELETE_REST_SUCCESS,
-    DELETE_REST_FAILURE
+    DELETE_REST_FAILURE,
+    UPDATE_REST_START,
+    UPDATE_REST_SUCCESS,
+    UPDATE_REST_FAILURE
 } from '../actions/actions';
 
 const initialState = {
