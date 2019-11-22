@@ -92,13 +92,15 @@ const ResturantList = props => {
         {searchResults.map(restaurant => {
           return (
             <ListDivs>
-              <ListLinks href={`/restaurantcard/${restaurant.id}`}>
-                <div>
-                  <h2>{restaurant.name}</h2>
-                  <p>City: {restaurant.city}</p>
-                  <p>Zip Code: {restaurant.zip_code}</p>
-                </div>
-              </ListLinks>
+              <Link to={`/restaurantcard/${restaurant.id}`}>
+                <ListLinks>
+                  <div>
+                    <h2 className="list-link-h2">{restaurant.name}</h2>
+                    <p>City: {restaurant.city}</p>
+                    <p>Zip Code: {restaurant.zip_code}</p>
+                  </div>
+                </ListLinks>
+              </Link>
             </ListDivs>
           );
         })}
