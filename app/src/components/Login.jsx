@@ -104,20 +104,20 @@ const Login = props => {
             <h2>Sign in to find vegan food in your area</h2>
             <Form className="signup-form">
               <label htmlFor="username">Sign In</label>
-              <ErrorMessage name="username" component="div" className="error" />
               <Field
                 className="field"
                 type="text"
                 name="username"
                 placeholder="Username"
               />
-              <ErrorMessage name="password" component="div" className="error" />
+              <ErrorMessage name="username" component="div" className="error" />
               <Field
                 className="field"
                 type="password"
                 name="password"
                 placeholder="Password"
               />
+              <ErrorMessage name="password" component="div" className="error" />
               <button type="submit" disabled={props.isSubmitting}>
                 {props.isSubmitting ? "Submitting" : "Submit"}
               </button>

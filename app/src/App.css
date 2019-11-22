@@ -79,6 +79,11 @@ input {
   font-size: 0.95rem;
   border-radius: 20px;
   text-align: center;
+  border: none;
+}
+
+input:focus {
+  outline: none;
 }
 
 .last-item {
