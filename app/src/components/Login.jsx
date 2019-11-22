@@ -112,6 +112,7 @@ const Login = props => {
                 {props.isSubmitting ? "Submitting" : "Submit"}
               </button>
             </Form>
+            <P>or</P>
             <Link to='/'><button>Register</button></Link>
           </SigninDiv>
         );
