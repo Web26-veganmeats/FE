@@ -7,7 +7,7 @@ import NavBar from "./NavBar";
 import salad from "./photos/salad.jpg";
 import styled from "styled-components";
 import background from "../img/sparse.jpg";
-import Maps from "./Map";
+// import Maps from "./Map";
 
 const CardImg = styled.img`
   border: 2px solid #91a799;

@@ -104,20 +104,21 @@ const Register = props => {
               <label htmlFor="username">
                 All you need is a username and a password
               </label>
-              <ErrorMessage name="username" component="div" className="error" />
               <Field
                 className="field"
                 type="text"
                 name="username"
                 placeholder="Username"
               />
-              <ErrorMessage name="password" component="div" className="error" />
+              <ErrorMessage name="username" component="div" className="error" />
+
               <Field
                 className="field"
                 type="password"
                 name="password"
                 placeholder="Password"
               />
+              <ErrorMessage name="password" component="div" className="error" />
               <button type="submit" disabled={props.isSubmitting}>
                 {props.isSubmitting ? "Submitting" : "Sign Up"}
               </button>
