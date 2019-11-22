@@ -15,8 +15,8 @@ function App() {
   return (
     <div className="App">
       <Switch>
-        <Route exact path='/' component={Login} />
-        <Route path='/register' component={Register} />
+        <Route exact path='/' component={Register} />
+        <Route path='/login' component={Login} />
         <PrivateRoute path='/restaurantlist' component={RestaurantList} />
         <PrivateRoute path='/restaurantcard/:id' component={RestaurantCard} />
         <PrivateRoute path='/addrestform' component={AddRestForm} />

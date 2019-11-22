@@ -53,26 +53,28 @@ const CardSubtitle = styled.h3`
   color: black;
 `;
 
-const ResturantCard = props => {
-  console.log("Restaurant Card Props: ", props);
+
+  
+const ResturantCard = (props) => {
+    console.log('Restaurant Card Props: ', props)  
 
   useEffect(() => {
     props.fetchRest();
   }, []);
 
-  const deleteRestaurant = (event, id) => {
-    event.preventDefault();
-    console.log("Props.match.params.id: ", props.match.params.id);
-    props.deleteRest(props.match.params.id);
-    // props.history.push('/restaurantlist')
-  };
 
+    const deleteRestaurant = (event, id) => {
+      event.preventDefault();
+      console.log('clicked delete restaurant')
+      console.log('Props.match.params.id: ', props.match.params.id)
+      props.deleteRest(props.match.params.id);
+      // props.history.push('/restaurantlist')
+    }
   return (
-    <div>
-      <NavBar />
-      <img src={background} alt="background" className="list_background" />
-      {props.restData.map((rest, key) => {
-        if (props.match.params.id === rest.id.toString())
+      <div>
+        <NavBar />
+        {props.restData.map((rest, key) => {
+          if(props.match.params.id === rest.id.toString())
           return (
             <Card key={rest.id}>
               <CardBody>

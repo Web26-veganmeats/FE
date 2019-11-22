@@ -1,5 +1,6 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Link } from 'react-router-dom'
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import styled from "styled-components";
 
@@ -123,7 +124,7 @@ const Login = props => {
               </button>
             </Form>
             <P>or</P>
-            <button onClick={newRoute}>Sign Up</button>
+            <Link to='/'><button>Register</button></Link>
           </SigninDiv>
         );
       }}
