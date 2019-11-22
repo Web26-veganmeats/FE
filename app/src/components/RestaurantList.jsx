@@ -89,14 +89,14 @@ const ResturantList = props => {
   } else {
     listRender = (
       <section className="search-form">
-        {searchResults.map(restaurants => {
+        {searchResults.map(restaurant => {
           return (
             <ListDivs>
-              <ListLinks href={`/restaurants/${restaurants.id}`}>
+              <ListLinks href={`/restaurantcard/${restaurant.id}`}>
                 <div>
-                  <h2>{restaurants.name}</h2>
-                  <p>City: {restaurants.city}</p>
-                  <p>Zip Code: {restaurants.zip_code}</p>
+                  <h2>{restaurant.name}</h2>
+                  <p>City: {restaurant.city}</p>
+                  <p>Zip Code: {restaurant.zip_code}</p>
                 </div>
               </ListLinks>
             </ListDivs>
