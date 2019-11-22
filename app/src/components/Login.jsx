@@ -5,7 +5,7 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 import styled from "styled-components";
 
 const SigninDiv = styled.div`
-  margin-top: 20vh;
+  margin-top: 15vh;
 
   h2 {
     font-size: 1.75rem;
