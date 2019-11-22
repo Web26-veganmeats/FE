@@ -36,13 +36,19 @@ const NavBar = () => {
         </Link>
         <InnerNav>
           <div>
-            <NavLinks href="/restaurantlist">Home</NavLinks>
+            <Link to='/restaurantlist'>
+            <NavLinks>Home</NavLinks>
+            </Link>
           </div>
           <div>
-            <NavLinks href="/">Sign In</NavLinks>
+            <Link to='/login'>
+            <NavLinks>Sign In</NavLinks>
+            </Link>
           </div>
           <div>
-            <NavLinks href="/">Sign Out</NavLinks>
+            <Link to='/login'>
+            <NavLinks>Sign Out</NavLinks>
+            </Link>
           </div>
         </InnerNav>
       </NavDiv>
