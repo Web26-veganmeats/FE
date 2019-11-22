@@ -4,7 +4,7 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 import styled from "styled-components";
 
 const SigninDiv = styled.div`
-  margin-top: 20vh;
+  margin-top: 15vh;
 
   h2 {
     font-size: 1.75rem;
@@ -46,6 +46,12 @@ const SigninDiv = styled.div`
   }
 `;
 
+const P = styled.p`
+  font-style: italic;
+  color: #91a799;
+  padding-top: 5%;
+`;
+
 const validate = ({ username, password }) => {
   const errors = {};
 
@@ -81,6 +87,10 @@ const Login = props => {
       });
   };
 
+  const newRoute = () => {
+    props.history.push("/register");
+  };
+
   return (
     <Formik
       onSubmit={handleSubmit}
@@ -112,6 +122,8 @@ const Login = props => {
                 {props.isSubmitting ? "Submitting" : "Submit"}
               </button>
             </Form>
+            <P>or</P>
+            <button onClick={newRoute}>Sign Up</button>
           </SigninDiv>
         );
       }}
