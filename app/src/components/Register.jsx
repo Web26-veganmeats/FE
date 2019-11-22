@@ -122,8 +122,6 @@ const Register = props => {
                 {props.isSubmitting ? "Submitting" : "Sign Up"}
               </button>
             </Form>
-            <br />
-            <br />
             <P>or</P>
             <button onClick={newRoute}>Sign In</button>
           </SignupDiv>
