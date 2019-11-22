@@ -1,5 +1,6 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Link } from 'react-router-dom'
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import styled from "styled-components";
 
@@ -44,6 +45,12 @@ const SigninDiv = styled.div`
     padding-bottom: 1%;
     font-size: 1.25rem;
   }
+`;
+
+const P = styled.p`
+  font-style: italic;
+  color: #91a799;
+  padding-top: 5%;
 `;
 
 const validate = ({ username, password }) => {
